@@ -14,7 +14,6 @@ class Page(models.Model):
     seo_title           = models.CharField(max_length=128)
     seo_description     = models.CharField(max_length=256)
     seo_keywords        = models.CharField(max_length=256)
-    creation_date_time  = models.DateTimeField(default=datetime.date.today())
     active              = models.BooleanField(default=True)
     
     page_type           = models.ForeignKey(PageType)

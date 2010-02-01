@@ -4,6 +4,6 @@ from niceguydavedjango.testimonial.models import Testimonial
 # =============================================================================
 
 class TestimonialAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('name')
 admin.site.register(Testimonial, TestimonialAdmin)
 

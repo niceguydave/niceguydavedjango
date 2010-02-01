@@ -4,6 +4,6 @@ from niceguydavedjango.person.models import Person
 # =============================================================================
 
 class PersonAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('email')
 admin.site.register(Person, PersonAdmin)
 
