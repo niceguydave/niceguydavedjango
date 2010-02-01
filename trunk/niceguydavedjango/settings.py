@@ -78,5 +78,6 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'niceguydavedjango.news',    
-    'niceguydavedjango.testimonials',
+    'niceguydavedjango.person',    
+    'niceguydavedjango.testimonial',
 )

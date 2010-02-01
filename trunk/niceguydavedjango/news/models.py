@@ -9,5 +9,8 @@ class News(models.Model):
     creation_date_time  = models.DateTimeField(default=datetime.date.today())
     active              = models.BooleanField(default=True)
     
+    class Meta:
+        verbose_name_plural = "News"
+        
     def __unicode__(self):
         return '%s' % self.heading
