@@ -1,5 +1,5 @@
 from django.contrib import admin
-from niceguydavedjango.testimonials.models import Testimonial
+from niceguydavedjango.testimonial.models import Testimonial
 
 # =============================================================================
 
