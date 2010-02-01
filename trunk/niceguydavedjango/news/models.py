@@ -6,7 +6,7 @@ from django.db import models
 class News(models.Model):
     heading             = models.CharField(max_length=255)
     copy                = models.TextField()
-    creation_date_time  = models.DateTimeField(default=datetime.date.today())
+    creation_date       = models.DateTimeField(default=datetime.datetime.today())
     active              = models.BooleanField(default=True)
     
     class Meta:
