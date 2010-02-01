@@ -77,7 +77,13 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
+)
+INSTALLED_APPS += (
+    'reversion',
+)
+INSTALLED_APPS += (
     'niceguydavedjango.news',    
+    'niceguydavedjango.page',    
     'niceguydavedjango.person',    
     'niceguydavedjango.testimonial',
 )
