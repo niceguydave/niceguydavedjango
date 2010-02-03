@@ -1,9 +1,10 @@
 from django.contrib import admin
 from niceguydavedjango.person.models import Person
+from reversion.admin import VersionAdmin
 
 # =============================================================================
 
-class PersonAdmin(admin.ModelAdmin):
+class PersonAdmin(VersionAdmin):
     field_sets = [
         (None,                {'fields': ['name']}),
         (None,                {'fields': ['copy']}),

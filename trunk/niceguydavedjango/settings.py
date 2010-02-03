@@ -1,5 +1,7 @@
 # Django settings for niceguydavedjango project.
 
+gettext = lambda s: s
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -57,10 +59,29 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.load_template_source',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.auth',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.request',
+    'django.core.context_processors.media',
+    'cms.context_processors.media',
+)
+CMS_TEMPLATES = (
+    ('base.html', gettext('default')),
+    ('2col.html', gettext('2 Column')),
+    ('3col.html', gettext('3 Column')),
+    ('extra.html', gettext('Some extra fancy template')),
+)
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+)
+MIDDLEWARE_CLASSES += (
+    'cms.middleware.page.CurrentPageMiddleware',
+    'cms.middleware.user.CurrentUserMiddleware',
+    #'cms.middleware.multilingual.MultilingualURLMiddleware',
 )
 
 ROOT_URLCONF = 'niceguydavedjango.urls'
@@ -79,11 +100,21 @@ INSTALLED_APPS = (
     'django.contrib.sites',
 )
 INSTALLED_APPS += (
+    'cms',
+    'cms.plugins.text',
+    'cms.plugins.picture',
+    'cms.plugins.link',
+    'cms.plugins.file',
+    'cms.plugins.snippet',
+    'cms.plugins.googlemap',
+    'mptt',
+    'publisher',
+)
+INSTALLED_APPS += (
     'reversion',
 )
 INSTALLED_APPS += (
-    'niceguydavedjango.news',    
-    'niceguydavedjango.page',    
+    'niceguydavedjango.news',        
     'niceguydavedjango.person',    
     'niceguydavedjango.testimonial',
 )
