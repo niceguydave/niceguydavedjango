@@ -11,6 +11,6 @@ class PersonAdmin(VersionAdmin):
         ('Date information',  {'fields': ['creation_date'], 
                                'classes': ['collapse']})
     ]
-    list_display = ('email','first_name','last_name',)
+    list_display = ('email','first_name','last_name','person_type')
 admin.site.register(Person, PersonAdmin)
 
