@@ -1,25 +1,46 @@
 import datetime
 from django.db import models
+from niceguydavedjango.study.models import Department
 
 # =============================================================================
-
-TYPE_CHOICES = (
-    ('Student', 'Student'),
-    ('Staff', 'Staff'),
-    ('Guest', 'Visiting guest'),
-)
 
 class Person(models.Model):
     first_name      = models.CharField(max_length=100)
     last_name       = models.CharField(max_length=100)
     email           = models.EmailField()
-    person_type     = models.CharField(max_length=10, choices=TYPE_CHOICES)
     creation_date   = models.DateTimeField(default=datetime.datetime.today())
     active          = models.BooleanField(default=True)
     
-    class Meta:
-        verbose_name_plural = "People"
+    department      = models.ManyToManyField(Department, blank=True)
     
     def __unicode__(self):
-        return '%s' % self.email
+        return '<Person: %s>' % self.email
+
+# ------------------------------------------------------------------------------    
+
+class Staff(Person):
+    title           = models.CharField(max_length=100)
+    qualifications  = models.CharField(max_length=100, blank=True)    
+    
+    class Meta:
+        verbose_name_plural = "Staff"
+    
+    def __unicode__(self):
+        return '<Staff: %s>' % self.email
+    
+# ------------------------------------------------------------------------------
+
+class VisitingGuest(Staff):
+    bio             = models.TextField(blank=True)
+    class Meta:
+        verbose_name_plural = "Visiting Guests"
+
+    def __unicode__(self):
+        return '<Visiting Guest: %s>' % self.email
+
+# ------------------------------------------------------------------------------
+
+class Student(Person):
+    def __unicode__(self):
+        return '<Student: %s>' % self.email
 
