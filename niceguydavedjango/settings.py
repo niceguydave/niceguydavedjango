@@ -90,6 +90,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    "C:/Dev/Django/templates"
 )
 
 INSTALLED_APPS = (
@@ -105,7 +106,7 @@ INSTALLED_APPS += (
     'cms.plugins.picture',
     'cms.plugins.link',
     'cms.plugins.file',
-    'cms.plugins.snippet',
+    #'cms.plugins.snippet',
     'cms.plugins.googlemap',
     'mptt',
     'publisher',
