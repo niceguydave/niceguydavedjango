@@ -3,28 +3,22 @@ from django.db import models
 # =============================================================================
 
 class Specialism(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
     
-# TODO: think about pulling all these choices out into a separate config file
-DEPT_CHOICES = (
-    ('Accordion', 'Accordion'),
-    ('Brass', 'Brass'),
-    ('Choral', 'Choral Conducting'),
-    ('Composition', 'Composition'),
-    ('Conducting', 'Conducting'),
-    ('Guitar', 'Guitar'),
-    ('Harp', 'Harp'),
-    ('Historical', 'Historical Performance'),
-    ('Jazz', 'Jazz'),
-    ('MusicalTheatre', 'Musical Theatre'),
-    ('Opera', 'Opera'),
-    ('Organ', 'Organ'),
-    ('Piano', 'Piano'),
-    ('Strings', 'Strings'),
-    ('Timpani_Percussion', 'Timpani and Percussion'),
-    ('Vocal', 'Vocal'),
-    ('Woodwind', 'Woodwind'),
-)
+    class Meta:
+        ordering = ('name',)
+
+    def __unicode__(self):
+        return u'<Specialism: %s>' % self.name
+    
+# ------------------------------------------------------------------------------
+
 class Department(models.Model):
-    name        = models.CharField(max_length=50, choices=DEPT_CHOICES)
+    name        = models.CharField(max_length=50, unique=True)
     specialism  = models.ManyToManyField(Specialism, blank=True)
+    
+    class Meta:
+        ordering = ('name',)
+    
+    def __unicode__(self):
+        return u'<Dept: %s>' % self.name
