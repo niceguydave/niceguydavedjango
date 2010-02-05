@@ -9,7 +9,7 @@ class Specialism(models.Model):
         ordering = ('name',)
 
     def __unicode__(self):
-        return u'<Specialism: %s>' % self.name
+        return u'%s' % self.name
     
 # ------------------------------------------------------------------------------
 
@@ -21,4 +21,4 @@ class Department(models.Model):
         ordering = ('name',)
     
     def __unicode__(self):
-        return u'<Dept: %s>' % self.name
+        return u'%s' % self.name
