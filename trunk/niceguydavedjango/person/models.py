@@ -1,6 +1,6 @@
 import datetime
 from django.db import models
-from niceguydavedjango.study.models import Department
+from niceguydavedjango.study.models import Department, Specialism
 
 # =============================================================================
 
@@ -32,6 +32,7 @@ class Staff(Person):
 
 class VisitingGuest(Staff):
     bio             = models.TextField(blank=True)
+    
     class Meta:
         verbose_name_plural = "Visiting Guests"
 
@@ -41,6 +42,7 @@ class VisitingGuest(Staff):
 # ------------------------------------------------------------------------------
 
 class Student(Person):
+    specialism      = models.ManyToManyField(Specialism)
     def __unicode__(self):
         return '<Student: %s>' % self.email
 
