@@ -1,0 +1,1 @@
+Putting together basic models. Learning the basics of Django
